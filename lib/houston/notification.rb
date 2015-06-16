@@ -34,17 +34,18 @@ module Houston
     attr_writer :apns_error_code
 
     def initialize(options = {})
-      @token = options[:token]
-      @expiry = options[:expiry]
-      @id = options[:id]
-      @priority = options[:priority]
+      options.stringify_keys!
+      @token = options['token']
+      @expiry = options['expiry']
+      @id = options['id']
+      @priority = options['priority']
 
       @params = options
     end
 
     def payload
       {
-        aps: @params.stringify_keys
+        aps: @params
       }.to_json
     end
 
