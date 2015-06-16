@@ -51,7 +51,7 @@ module Houston
     end
 
     def payload
-      json = {}.merge(@custom_data || {}).inject({}){|h,(k,v)| h[k.to_s] = v; h}
+      json = @custom_data.stringify_keys
 
       json['aps'] ||= {}
       json['aps']['alert'] = @alert if @alert
