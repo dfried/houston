@@ -35,7 +35,7 @@ module Houston
 
     def initialize(options = {})
       options.stringify_keys!
-      @token = options['token']
+      @token = options.delete('token')
       @expiry = options['expiry']
       @id = options['id']
       @priority = options['priority']
